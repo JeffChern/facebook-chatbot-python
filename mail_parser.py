@@ -26,8 +26,8 @@ def mail_texts(mailbox, from_addresses=None):
 
             # Ugly hack: exclude OTR encrpyted messages
             if '?OTR' in reply[:50]:
-                print >> sys.stderr, "Excluding OTR message"
-                print >> sys.stderr, reply[:50]
+                print("Excluding OTR message", file=sys.stderr)
+                print(reply[:50], file=sys.stderr)
                 continue
 
             # Ugly hack: some chat messages are duplicated
@@ -35,8 +35,8 @@ def mail_texts(mailbox, from_addresses=None):
             if len(reply) > 10 and len(reply) % 2 == 0:
                 half = len(reply) / 2
                 if reply[:half] == reply[half:]:
-                    print >> sys.stderr, "Fixing duplicated message"
-                    print >> sys.stderr, reply
+                    print("Fixing duplicated message", file=sys.stderr)
+                    print(reply, file=sys.stderr)
                     reply = reply[:half]
 
             yield reply

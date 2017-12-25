@@ -12,7 +12,7 @@ def main():
     addresses = set(sys.argv[2:])
     f = open("corpus.txt", "w")
     for text in mail_parser.mail_texts(mbox, addresses):
-        print >> f, text
+        print(text, file=f)
     f.close()
 
 if __name__ == '__main__':
